@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:toonflix/screens/home_screen.dart';
 
 void main() {
   runApp(const App());
@@ -8,49 +9,52 @@ class App extends StatefulWidget {
   const App({super.key});
 
   @override
-  State<App> createState() => _AppState();
+  State createState() => _AppState();
 }
 
-class _AppState extends State<App> {
-  List<int> numbers = [];
-
-  void onClicked() {
-    setState(() {
-      //변경된 값을 Widget build() {}에게 데이터 변경을 요청하는 함수
-      numbers.add(numbers.length);
-    });
-  }
-
+class _AppState extends State {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        backgroundColor: const Color(0xfff4eddb),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                'Click Count',
-                style: TextStyle(fontSize: 20),
-              ),
-              for (var n in numbers) Text('$n'),
-              const SizedBox(
-                height: 20,
-              ),
-              IconButton(
-                onPressed: onClicked,
-                color: Colors.pink.shade700,
-                focusColor: Colors.black,
-                iconSize: 100,
-                icon: const Icon(
-                  Icons.add_circle,
-                ),
-              ),
-            ],
+      theme: ThemeData(
+        textTheme: const TextTheme(
+          displayLarge: TextStyle(
+            color: Color(0xFF232B55),
           ),
         ),
+        cardColor: const Color(0xFFF4EDDB),
+        scaffoldBackgroundColor: const Color(0xFFE7626C),
       ),
+      home: const HomeScreen(),
     );
   }
 }
+
+
+
+
+// class App extends StatefulWidget {
+//   const App({super.key});
+
+//   @override
+//   State createState() => _AppState();
+// }
+
+// class _AppState extends State {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       theme: ThemeData(
+//         textTheme: const TextTheme(
+//           displayLarge: TextStyle(
+//             color: Color(0xFF232B55),
+//           ),
+//         ),
+//         cardColor: const Color(0xFFF4EDDB),
+//         colorScheme: ColorScheme.fromSwatch(
+//           backgroundColor: const Color(0xFFE7626C),
+//         ),
+//       ),
+//     );
+//   }
+// }
